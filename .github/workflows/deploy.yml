@@ -1,8 +1,8 @@
-name: Deploy SvelteKit to GitHub Pages
+name: Deploy Vite app to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main ]   # change if your default branch is different
   workflow_dispatch:
 
 permissions:
@@ -27,20 +27,24 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Install deps
-        run: npm ci
+      - name: Install
+        run: npm ci || npm i
 
+      # IMPORTANT:
+      # If deploying to https://USERNAME.github.io/REPO, keep BASE_PATH as below.
+      # If deploying to root site https://USERNAME.github.io, set BASE_PATH to "".
       - name: Build
         env:
-          BASE_PATH: ${{ github.repository_owner == 'your-org-or-user' && '""' || '""' }}
-        run: |
-          # (Optional) if you publish from a project subpath, you can pass a base path.
-          npm run build
+          BASE_PATH: "/${{ github.event.repository.name }}"
+        run: npm run build
+
+      - name: Verify dist/
+        run: test -d dist && ls -la dist || (echo "❌ dist/ not found"; exit 1)
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: build
+          path: dist
 
   deploy:
     needs: build

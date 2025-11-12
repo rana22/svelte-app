@@ -1,53 +1,22 @@
 <script lang="ts">
-	import { Spring } from 'svelte/motion';
+  import SwipeCarousel from './lib/SwipeCarousel.svelte';
 
-	const count = new Spring(0);
-	const offset = $derived(modulo(count.current, 1));
-
-	function modulo(n: number, m: number) {
-		// handle negative numbers
-		return ((n % m) + m) % m;
-	}
-
-	// import '../app.css';
-	import SwipeCarousel from '$lib/SwipeCarousel.svelte';
-
-	const images = [
-		{ src: '/images/apt-1.png', alt: 'Living room' },
-		{ src: '/images/apt-2.png', alt: 'Kitchen' },
-		{ src: '/images/apt-3.png', alt: 'Bedroom' },
-		{ src: '/images/apt-4.png', alt: 'Bathroom' },
-		{ src: '/images/apt-5.png', alt: 'Bathroom' },
-		{ src: '/images/apt-6.png', alt: 'Bathroom' }
-	];
+  // Use BASE_URL so images work on GitHub Pages subpaths
+  const base = import.meta.env.BASE_URL; // "/" or "/repo-name/"
+  const images = [
+    { src: `${base}images/apt-1.png`, alt: 'Living room' },
+    { src: `${base}images/apt-2.png`, alt: 'Kitchen' },
+    { src: `${base}images/apt-3.png`, alt: 'Bedroom' },
+    { src: `${base}images/apt-4.png`, alt: 'Bathroom' }
+  ];
 </script>
-
-<div class="counter">
-	<!-- <button
-		onclick={() => (count.target -= 1)} aria-label="Decrease the counter by one">
-		<svg aria-hidden="true" viewBox="0 0 1 1">
-			<path d="M0,0.5 L1,0.5" />
-		</svg>
-	</button>
-
-	<div class="counter-viewport">
-		<div class="counter-digits" style="transform: translate(0, {100 * offset}%)">
-			<strong class="hidden" aria-hidden="true">{Math.floor(count.current + 1)}</strong>
-			<strong>{Math.floor(count.current)}</strong>
-		</div>
-	</div>
-
-	<button onclick={() => (count.target += 1)} aria-label="Increase the counter by one">
-		<svg aria-hidden="true" viewBox="0 0 1 1">
-			<path d="M0,0.5 L1,0.5 M0.5,0 L0.5,1" />
-		</svg>
-	</button> -->
 
 <div class="container">
   <div class="card gallery-wrap">
     <SwipeCarousel {images} />
   </div>
 
+  <!-- Put your apartment details block here -->
   <div class="card">
     <h1>2-Bedroom / 1-Bath Apartment for Rent – 180 Talbott Street, Rockville, MD</h1>
     <p class="small">
@@ -107,9 +76,6 @@
 		<p>Phone: 616-350-8878</p>
 	</div>
   </div>
-
-</div>
-
 </div>
 
 <style>
