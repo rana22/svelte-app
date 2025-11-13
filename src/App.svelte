@@ -35,7 +35,7 @@
       <div class="info-bar">
         <span class="badge">Available Dec 1, 2025</span>
         <span class="dot"></span>
-        <span class="badge badge--outline">Tours begin Nov 20, 2025</span>
+        <span class="badge">Tours begin Nov 20, 2025</span>
       </div>
 
       <p class="lead">
@@ -106,6 +106,29 @@
       </div>
     </div>
   </main>
+  <footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4>180 Talbott St · Rockville</h4>
+        <p class="muted">2 Bed · 1 Bath · Near Metro</p>
+      </div>
+	  <div class="footer-contact">
+	  	<h4>Contact</h4>
+	  	<div class="contact-lines">
+	  		<div><span class="label">Email:</span> <a href="mailto:ambar.rana123@gmail.com">ambar.rana123@gmail.com</a></div>
+	  		<div><span class="label">Phone:</span> 616-350-8878</div>
+	  	</div>
+	  </div>
+    </div>
+
+    <div class="footer-meta">
+      <span>© {new Date().getFullYear()} 180 Talbott Street</span>
+      <span class="sep">•</span>
+      <span>Rockville, MD</span>
+    </div>
+  </div>
+</footer>
 </div>
 
 <style>
@@ -167,9 +190,13 @@
   /* ---------- Badges & info bar ---------- */
   .info-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 14px}
   .badge{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:6px 10px;border-radius:999px;border:1px solid var(--line);
-    background:rgba(255,255,255,.04);font-size:.9rem
+    display:inline-flex;
+	align-items:center;gap:8px;
+    padding:6px 10px;
+	border-radius:999px;
+	border: 2px solid #59616f;
+    background: #bdc3c7;
+	font-size:.9rem
   }
   .badge--outline{background:transparent}
   .dot{width:5px;height:5px;border-radius:999px;background:var(--line)}
@@ -213,4 +240,80 @@
 
   /* ---------- Utilities ---------- */
   .small{color:var(--muted)}
+
+  .site-footer{
+  /* contrasting full-width background */
+  background: linear-gradient(180deg, #0b0d12 0%, #0a0e16 100%);
+  color:#fff;           /* force white text */
+  border-top: 1px solid rgba(255,255,255,.08);
+  margin-top: 28px;
+}
+.site-footer .muted{ color: rgba(255,255,255,.75); }
+.site-footer .micro{ color: rgba(255,255,255,.65); }
+
+.footer-inner{
+  max-width: var(--maxw, 980px);
+  margin: 0 auto;
+  padding: 28px 24px;
+}
+
+.footer-grid{
+  display: grid;
+  gap: 18px;
+}
+@media (min-width: 760px){
+  .footer-grid{
+    grid-template-columns: 1.2fr 1fr;
+    align-items: start;
+  }
+}
+
+.footer-brand h4,
+.footer-contact h4{
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: .2px;
+}
+
+.footer-meta{
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+  color: rgba(255,255,255,.7);
+  font-size: .9rem;
+}
+.footer-meta .sep{ opacity:.6 }
+
+/* Footer buttons (light variants) */
+.btn-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; }
+.btn{
+  appearance:none; text-decoration:none;
+  padding:9px 14px; border-radius:10px;
+  transition: transform .04s ease, background .2s ease, border-color .2s ease;
+}
+.btn--light{
+  background: rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.2);
+  color:#fff;
+}
+.btn--light:hover{ transform: translateY(-1px); border-color: rgba(96,229,173,.5); }
+
+.btn--outline-light{
+  background: transparent;
+  border:1px solid rgba(255,255,255,.35);
+  color:#fff;
+}
+.btn--outline-light:hover{ transform: translateY(-1px); border-color:#fff; }
+
+.btn--ghost-light{
+  background: transparent;
+  border:1px dashed rgba(255,255,255,.35);
+  color:#fff;
+}
+.btn--ghost-light:hover{ transform: translateY(-1px); border-color:#fff; }
 </style>
