@@ -13,7 +13,6 @@
   ];
 </script>
 
-
 <div class="page">
   <header class="topbar">
     <div class="brand">180 Talbott St · Rockville</div>
