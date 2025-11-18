@@ -10,5 +10,5 @@ export function iviewerUrlForImage(imageId: number | string): string {
 }
 
 export function thumbnailUrl(imageId: number | string): string {
-  return `${OMERO_BASE}/webgateway/thumbnail/${imageId}/`;
+  return `https://nife-dev.cancer.gov/webgateway/render_thumbnail/${imageId}`;
 }
