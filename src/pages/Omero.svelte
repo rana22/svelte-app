@@ -71,6 +71,13 @@
             </div>
         </div>
 
+        <iframe
+        src="https://nife-dev.cancer.gov/webgateway/render_thumbnail/189455"
+        width="100%"
+        height="600"
+        style="border:none;"
+        />
+
         {#if showViewer}
             <div class="viewer">
                 <iframe
