@@ -201,7 +201,7 @@
     // Goes to: https://nife-dev.cancer.gov/omero_plus/login/?url=/omero_plus/return-to-external/
     const login = new URL('https://nife-dev.cancer.gov/omero_plus/login/');
     // this location is handled by nginx on OMERO side
-    login.searchParams.set('url', '/omero_plus/return-to-external/');
+    login.searchParams.set('url', '/omero_plus/return-to-external');
     window.location.href = login.toString();
   }
 
