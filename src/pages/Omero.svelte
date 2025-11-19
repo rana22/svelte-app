@@ -181,8 +181,8 @@
   } from '../lib/omero';
 
   // Default image ID; user can change
-  let imageId = 123;
-
+  let imageId = 123;    
+  const OMERO_BASE = 'https://nife-dev.cancer.gov';
   // Where OMERO should send the user back after login
   let returnTo = '';
 
@@ -252,12 +252,17 @@
     {#if showViewer}
       <div class="viewer">
         <iframe
-          title="OMERO iviewer"
-          src={`https://nife-dev.cancer.gov/webgateway/render_thumbnail/189455`}
-          referrerpolicy="no-referrer"
-          allowfullscreen
+            title="OMERO iviewer"
+            src={`${OMERO_BASE}/iviewer/?images=${imageId}`}
+            width="100%"
+            height="600"
+            style="border:none;"
         />
-        <img src={`https://nife-dev.cancer.gov/webgateway/render_thumbnail/189455`} alt='image-icon'/>
+        <img
+            src={`https://nife-dev.cancer.gov/iviewer/?images=${imageId}`}
+            alt='image-icon'
+            tyle="width: 100%; height: 70vh; border: 0;"
+        />
       </div>
     {/if}
 
