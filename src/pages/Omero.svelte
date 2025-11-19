@@ -261,7 +261,7 @@
         <img
             src={`https://nife-dev.cancer.gov/iviewer/?images=${imageId}`}
             alt='image-icon'
-            tyle="width: 100%; height: 70vh; border: 0;"
+            style="width: 100%; height: 70vh; border: 0;"
         />
       </div>
     {/if}
