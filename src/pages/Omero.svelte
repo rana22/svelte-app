@@ -220,6 +220,9 @@
 
   // computed src for the iframe (only set when viewer is shown)
   $: viewerSrc = showViewer ? iviewerUrlForImage(imageId) : '';
+  
+  export const fullImageUrl = (id: number) =>
+  `${OMERO_BASE}/webgateway/render_image/${id}/?max_size=1600`; 
 </script>
 
 <div class="page">
@@ -260,12 +263,25 @@
         />
         <br/>
         <br/>
+        
+        <h3> Thumbnail</h3>
+
         <img
             src={`https://nife-dev.cancer.gov/webgateway/render_thumbnail/${imageId}`}
             alt='image-icon'
         />
         <h3>Image id: {imageId}</h3>
+
+        <hr />
+        <hr />
+        <!-- full image only -->
+        <h2> full image </h2>
+        <div class="full-image">
+            <img src={fullImageUrl(imageId)} alt={`Full image ${imageId}`} />
+        </div>
+
       </div>
+      
     {/if}
 
     <footer class="note">
