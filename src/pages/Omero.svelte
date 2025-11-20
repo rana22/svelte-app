@@ -258,7 +258,13 @@
             height="600"
             style="border:none;"
         />
-        <img src={`https://nife-dev.cancer.gov/webgateway/render_thumbnail/${imageId}`} alt='image-icon'/>
+        <br/>
+        <br/>
+        <img
+            src={`https://nife-dev.cancer.gov/webgateway/render_thumbnail/${imageId}`}
+            alt='image-icon'
+        />
+        <h3>Image id: {imageId}</h3>
       </div>
     {/if}
 
