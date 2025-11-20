@@ -177,7 +177,10 @@
   import { onMount } from 'svelte';
   import {
     omeroLoginUrl,
-    iviewerUrlForImage
+    iviewerUrlForImage,
+
+    getImageRenderUrl
+
   } from '../lib/omero';
 
   // Default image ID; user can change
@@ -222,7 +225,29 @@
   $: viewerSrc = showViewer ? iviewerUrlForImage(imageId) : '';
   
   export const fullImageUrl = (id: number) =>
-  `${OMERO_BASE}/webgateway/render_image/${id}/?max_size=1600`; 
+  `${OMERO_BASE}/webgateway/render_image/${id}/?max_size=1600`;
+  let imageUrl: string | null = null;
+  let error: string | null = null;
+  let loading = false;
+
+  async function loadImage() {
+    loading = true;
+    error = null;
+    try {
+      imageUrl = await getImageRenderUrl(imageId);
+    } catch (e) {
+      console.error(e);
+      error = 'Unable to load render settings for this image.';
+      imageUrl = null;
+    } finally {
+      loading = false;
+    }
+  }
+
+   // auto-load on mount or when imageId changes
+  $: if (imageId) {
+    void loadImage();
+  }
 </script>
 
 <div class="page">
@@ -277,7 +302,7 @@
         <!-- full image only -->
         <h2> full image </h2>
         <div class="full-image">
-            <img src={fullImageUrl(imageId)} alt={`Full image ${imageId}`} />
+            <img src={imageUrl} alt={`Full image ${imageId}`} />
         </div>
 
       </div>
