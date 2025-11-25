@@ -192,6 +192,13 @@
   onMount(() => {
     // e.g. https://rana22.github.io/svelte-app/#/omero
     returnTo = `${window.location.origin}${window.location.pathname}#/omero`;
+    const params = new URLSearchParams(window.location.search);
+    let imageIdFromPath = params.get('Image');
+    console.log('get image id path param');
+    if (imageIdFromPath) {
+      imageId = Number(imageIdFromPath);
+    }
+
   });
 
   /** Generic login helper using your helper omeroLoginUrl(returnTo) */
@@ -302,7 +309,7 @@
         <!-- full image only -->
         <h2> full image </h2>
         <div class="full-image">
-            <img src={imageUrl} alt={`Full image ${imageId}`} />
+          <img src={imageUrl} alt={`Full image ${imageId}`} />
         </div>
 
       </div>
