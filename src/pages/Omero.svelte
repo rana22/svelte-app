@@ -183,6 +183,12 @@
 
   } from '../lib/omero';
 
+  let showViewer = false;
+
+  function openViewer() {
+    showViewer = true;
+  };
+  
   // Default image ID; user can change
   let imageId = 123;    
   const OMERO_BASE = 'https://nife-dev.cancer.gov';
@@ -197,6 +203,7 @@
     console.log('get image id path param');
     if (imageIdFromPath) {
       imageId = Number(imageIdFromPath);
+      openViewer();
     }
 
   });
@@ -215,11 +222,7 @@
     window.location.href = login.toString();
   }
 
-  let showViewer = false;
-
-  function openViewer() {
-    showViewer = true;
-  }
+  
 
   function onImageIdInput(e: Event) {
     const v = Number((e.target as HTMLInputElement).value);
